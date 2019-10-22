@@ -62,3 +62,17 @@ or configure webhooks per repository *Settings -> Webhooks*.
 |   HTTP Method     | POST                            |
 |   Content Type    | application/json                |
 |   Secret          | WEBHOOK_SECRET                  |
+
+## Troubleshooting
+
+### Enable verbose mode
+
+```sh
+docker run \
+ --name webhook \
+ -p 9000:9000 \
+ -e SECRET="WEBHOOK_SECRET" \
+ -e GO_API_TOKEN="GO_ADMIN_USER_TOKEN" \
+ -e GO_SERVER_URL="http://gocd-server:8153" \
+ ugrawert/gocd-webhooks -template -hooks=/opt/webhook/hooks.json -verbose
+```
